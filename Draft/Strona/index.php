@@ -30,6 +30,7 @@
 		Login: <br /> <input type="text" name="login" /> <br />
 		Hasło: <br /> <input type="password" name="haslo" /> <br /><br />
 		<input type="submit" value="Zaloguj się" />
+		<a href="Rejestracja/przypomnij_haslo.php">Przypomnij hasło!</a>
 	
 	</form>
 	

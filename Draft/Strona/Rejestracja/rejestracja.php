@@ -144,8 +144,27 @@
                     
 					if ($polaczenie->query("INSERT INTO DUsers VALUES (NULL, '$nick', '$haslo_hash', '$kod','ZAL', '$imie', '$nazwisko', '$email', 50)"))
 					{
-						$_SESSION['udanarejestracja']=true;
-						header('Location: witamy.php');
+                        $email_active = "email_aktywacja.html";
+						$messeage = file_get_contents($email_active);
+						$messeage = str_replace("[Imie]", $imie, $messeage);
+						$messeage = str_replace("[Nazwisko]", $nazwisko, $messeage);
+						$messeage = str_replace("[key]", $kod, $messeage);
+						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/rejestracja/aktywacja.php', $messeage);
+
+						$naglowki = "From: admin@and-dab.cba.pl\n" .
+									"Reply-To: admin@and-dab.cba.pl\n" .
+									"Content-type: text/html; charset=utf-8\n";
+
+						if(mail($email, "Potwierdzenie maila", $messeage, $naglowki))
+                        {
+                            $_SESSION['udanarejestracja']=true;
+						      header('Location: witamy.php');
+                        }
+                        else
+                        {
+                            echo("blad przy wysyłce maila");
+                        }
+						
 					}
 					else
 					{
