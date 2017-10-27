@@ -194,20 +194,21 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - załóż darmowe konto!</title>
+	<link rel="stylesheet" href="../css/style.css">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	
-	<style>
-		.error
-		{
-			color:red;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-	</style>
 </head>
 
 <body>
-	
+	<nav>
+			<ol>
+				<li><a href="#">Strona główna</a></li>
+				<li><a href="#">O Projekcie</a></li>
+                <li><a href="#">Projekty</a></li>
+                <li><a href="#">Kontakt</a></li>					
+			</ol>   
+	    </nav>
+	<div id="rejestracja">
 	<form method="post">
 	
 		Login: <br /> <input type="text" value="<?php
@@ -316,7 +317,7 @@
 			}
 		?>	
 		
-		<div class="g-recaptcha" data-sitekey="6LftLzYUAAAAAAmwmG4zeRgapuSlJdo2Qidcf2qX"></div>
+		<div class="g-recaptcha " data-sitekey="6LftLzYUAAAAAAmwmG4zeRgapuSlJdo2Qidcf2qX"></div>
 		
 		<?php
 			if (isset($_SESSION['e_bot']))
@@ -330,7 +331,11 @@
 		
 		<input type="submit" value="Zarejestruj się" />
 		
-	</form>
+	</form>    
+	    
+	</div>
+	<script src="../js/jquery.min.js"></script>
+    <script src="../js/stickymenu.js"></script>
 
 </body>
 </html>

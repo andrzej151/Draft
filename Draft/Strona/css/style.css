@@ -1,0 +1,177 @@
+body{
+    /* Background pattern from Subtle Patterns */
+    background-image: url("../img/dark_mosaic.png");
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+#container
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 15px;
+    
+}
+nav{
+    width: 100%;
+	padding: 10px 0;
+	background-color: #339933;
+	text-align: center;
+	border-top: 1px solid #227722;
+	border-bottom: 1px solid #227722;
+}
+
+.sticky
+{
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+}
+
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+   
+}
+
+ol a
+{
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+
+ol  li
+{
+	float: left;
+	width: 150px;
+	height: 40px;
+	border-right: 1px dashed #225522;
+}
+
+ol  li:first-child
+{
+	border-left: 1px dashed #225522;
+}
+
+ol li:hover
+{
+	background-color: #55AA55;
+}
+
+ol  li:hover  a
+{
+	color: #FFFFFF;
+}
+
+
+
+#logowanie
+{
+    margin-left: 10px;
+    margin-top: 20px;
+    background: #DDDDDD;
+    width: 30%;
+    -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    text-align: center;
+    padding: 15px;
+    float: right;
+}
+
+#rejestracja
+{
+    margin-left: 40px;
+    margin-top: 40px;
+    background: #DDDDDD;
+    width: 50%;
+    -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    text-align: center;
+    padding: 15px;
+    float: left;
+    color: #222222;
+}
+
+#logowanie button{
+    background-color: #2222AA;
+    width: 300px;
+    color:  white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s ese-in-out;
+}
+
+#logowanie button:hover{
+    background-color: #3333BB;
+    transform: scale(1.1);
+}
+
+input[type=text],
+input[type=password]{
+    width: 300px;
+    padding: 10px;
+    background-color: #efefef;
+    color: #666;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    font-size: 20px;
+    box-sizing: border-box;
+    margin-left: 15px;
+    margin-bottom: 15px;
+
+
+}
+input[type=submit]
+{
+    width: 300px;
+    background-color: #36b03c;
+    font-size: 20px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: none;
+    transition: all 0.4s ese-in-out;
+    box-sizing: border-box;
+}
+input[type=submit]:hover
+{
+    width: 90%;
+    background-color: #47c14d;
+    transform: scale(1.1);
+}
+
+
+a{
+    color:  #000000;
+    text-decoration: none;
+}
+
+.g-recaptcha{
+    margin-left: 30%;
+}
