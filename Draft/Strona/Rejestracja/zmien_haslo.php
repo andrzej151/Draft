@@ -92,31 +92,59 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="../gra/gra.css">
 	<title>Draft - Przypomnij haslo</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-  <?php
+
+	 <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                DRAFT
+            </div>
+        </div>
+            <div class="nav">
+                <nav>
+                    <ol>
+                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="#">O Projekcie</a></li>
+                        <li><a href="#">Projekty</a></li>
+                        <li><a href="#">Kontakt</a></li>					
+			        </ol>
+                </nav>
+            </div>
+        
+        <div class="content">
+            <div class="pole">
+                <?php
 			if (isset($_SESSION['succes']))
 			{
 				echo '<div >'.$_SESSION['succes'].'</div>';
 				unset($_SESSION['e_succes']);
 			}
 		?>
-   <p>Zmień hasło</p>
-    <form action="" method="post">
-        	Twoje hasło: <br /> <input type="password"  name="haslo1" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_haslo']))
-			{
-				echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
-				unset($_SESSION['e_haslo']);
-			}
-		?>		
-		
-		Powtórz hasło: <br /> <input type="password"  name="haslo2" /><br />
-   
-   <input type="submit" value="Wyslij link" />
-    </form>
+               <p>Zmień hasło</p>
+                <form action="" method="post">
+                        Twoje hasło: <br /> <input type="password"  name="haslo1" /><br />
+
+                    <?php
+                        if (isset($_SESSION['e_haslo']))
+                        {
+                            echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
+                            unset($_SESSION['e_haslo']);
+                        }
+                    ?>		
+
+                    Powtórz hasło: <br /> <input type="password"  name="haslo2" /><br />
+
+               <input type="submit" value="Wyslij link" />
+                </form>
+            </div>
+         </div>
+    </div>
+	
+	<script src="../js/jquery.min.js"> </script>
+	<script src="../js/stickymenu.js"> </script>
+  
 </body>
 </html>

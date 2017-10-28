@@ -200,140 +200,152 @@
 </head>
 
 <body>
-	<nav>
-			<ol>
-				<li><a href="#">Strona główna</a></li>
-				<li><a href="#">O Projekcie</a></li>
-                <li><a href="#">Projekty</a></li>
-                <li><a href="#">Kontakt</a></li>					
-			</ol>   
-	    </nav>
-	<div id="rejestracja">
-	<form method="post">
+	 <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                DRAFT
+            </div>
+        </div>
+            <div class="nav">
+                <nav>
+                    <ol>
+                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="#">O Projekcie</a></li>
+                        <li><a href="#">Projekty</a></li>
+                        <li><a href="#">Kontakt</a></li>					
+			        </ol>
+                </nav>
+            </div>
+        
+        <div class="content">
+                <div id="rejestracja">
+                    <form method="post">
+
+                        Login: <br /> <input type="text" value="<?php
+                            if (isset($_SESSION['fr_nick']))
+                            {
+                                echo $_SESSION['fr_nick'];
+                                unset($_SESSION['fr_nick']);
+                            }
+                        ?>" name="nick" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_nick']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
+                                unset($_SESSION['e_nick']);
+                            }
+                        ?>
+
+                            Imię: <br /> <input type="text" value="<?php
+                            if (isset($_SESSION['fr_imie']))
+                            {
+                                echo $_SESSION['fr_imie'];
+                                unset($_SESSION['fr_imie']);
+                            }
+                        ?>" name="imie" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_imie']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_imie'].'</div>';
+                                unset($_SESSION['e_imie']);
+                            }
+                        ?>
+
+                            Nazwisko: <br /> <input type="text" value="<?php
+                            if (isset($_SESSION['fr_nazwisko']))
+                            {
+                                echo $_SESSION['fr_nazwisko'];
+                                unset($_SESSION['fr_nazwisko']);
+                            }
+                        ?>" name="nazwisko" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_nazwisko']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_nazwisko'].'</div>';
+                                unset($_SESSION['e_nazwisko']);
+                            }
+                        ?>
+
+                        E-mail: <br /> <input type="text" value="<?php
+                            if (isset($_SESSION['fr_email']))
+                            {
+                                echo $_SESSION['fr_email'];
+                                unset($_SESSION['fr_email']);
+                            }
+                        ?>" name="email" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_email']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+                                unset($_SESSION['e_email']);
+                            }
+                        ?>
+
+                        Twoje hasło: <br /> <input type="password"  value="<?php
+                            if (isset($_SESSION['fr_haslo1']))
+                            {
+                                echo $_SESSION['fr_haslo1'];
+                                unset($_SESSION['fr_haslo1']);
+                            }
+                        ?>" name="haslo1" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_haslo']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
+                                unset($_SESSION['e_haslo']);
+                            }
+                        ?>		
+
+                        Powtórz hasło: <br /> <input type="password" value="<?php
+                            if (isset($_SESSION['fr_haslo2']))
+                            {
+                                echo $_SESSION['fr_haslo2'];
+                                unset($_SESSION['fr_haslo2']);
+                            }
+                        ?>" name="haslo2" /><br />
+
+                        <label>
+                            <input type="checkbox" name="regulamin" <?php
+                            if (isset($_SESSION['fr_regulamin']))
+                            {
+                                echo "checked";
+                                unset($_SESSION['fr_regulamin']);
+                            }
+                                ?>/> Akceptuję regulamin
+                        </label>
+
+                        <?php
+                            if (isset($_SESSION['e_regulamin']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_regulamin'].'</div>';
+                                unset($_SESSION['e_regulamin']);
+                            }
+                        ?>	
+
+                        <div class="g-recaptcha " data-sitekey="6LftLzYUAAAAAAmwmG4zeRgapuSlJdo2Qidcf2qX"></div>
+
+                        <?php
+                            if (isset($_SESSION['e_bot']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
+                                unset($_SESSION['e_bot']);
+                            }
+                        ?>	
+
+                        <br />
+
+                        <input type="submit" value="Zarejestruj się" />
+
+                    </form>    
+         </div>
+    </div>
 	
-		Login: <br /> <input type="text" value="<?php
-			if (isset($_SESSION['fr_nick']))
-			{
-				echo $_SESSION['fr_nick'];
-				unset($_SESSION['fr_nick']);
-			}
-		?>" name="nick" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_nick']))
-			{
-				echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
-				unset($_SESSION['e_nick']);
-			}
-		?>
-		
-			Imię: <br /> <input type="text" value="<?php
-			if (isset($_SESSION['fr_imie']))
-			{
-				echo $_SESSION['fr_imie'];
-				unset($_SESSION['fr_imie']);
-			}
-		?>" name="imie" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_imie']))
-			{
-				echo '<div class="error">'.$_SESSION['e_imie'].'</div>';
-				unset($_SESSION['e_imie']);
-			}
-		?>
-		
-			Nazwisko: <br /> <input type="text" value="<?php
-			if (isset($_SESSION['fr_nazwisko']))
-			{
-				echo $_SESSION['fr_nazwisko'];
-				unset($_SESSION['fr_nazwisko']);
-			}
-		?>" name="nazwisko" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_nazwisko']))
-			{
-				echo '<div class="error">'.$_SESSION['e_nazwisko'].'</div>';
-				unset($_SESSION['e_nazwisko']);
-			}
-		?>
-		
-		E-mail: <br /> <input type="text" value="<?php
-			if (isset($_SESSION['fr_email']))
-			{
-				echo $_SESSION['fr_email'];
-				unset($_SESSION['fr_email']);
-			}
-		?>" name="email" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_email']))
-			{
-				echo '<div class="error">'.$_SESSION['e_email'].'</div>';
-				unset($_SESSION['e_email']);
-			}
-		?>
-		
-		Twoje hasło: <br /> <input type="password"  value="<?php
-			if (isset($_SESSION['fr_haslo1']))
-			{
-				echo $_SESSION['fr_haslo1'];
-				unset($_SESSION['fr_haslo1']);
-			}
-		?>" name="haslo1" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_haslo']))
-			{
-				echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
-				unset($_SESSION['e_haslo']);
-			}
-		?>		
-		
-		Powtórz hasło: <br /> <input type="password" value="<?php
-			if (isset($_SESSION['fr_haslo2']))
-			{
-				echo $_SESSION['fr_haslo2'];
-				unset($_SESSION['fr_haslo2']);
-			}
-		?>" name="haslo2" /><br />
-		
-		<label>
-			<input type="checkbox" name="regulamin" <?php
-			if (isset($_SESSION['fr_regulamin']))
-			{
-				echo "checked";
-				unset($_SESSION['fr_regulamin']);
-			}
-				?>/> Akceptuję regulamin
-		</label>
-		
-		<?php
-			if (isset($_SESSION['e_regulamin']))
-			{
-				echo '<div class="error">'.$_SESSION['e_regulamin'].'</div>';
-				unset($_SESSION['e_regulamin']);
-			}
-		?>	
-		
-		<div class="g-recaptcha " data-sitekey="6LftLzYUAAAAAAmwmG4zeRgapuSlJdo2Qidcf2qX"></div>
-		
-		<?php
-			if (isset($_SESSION['e_bot']))
-			{
-				echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
-				unset($_SESSION['e_bot']);
-			}
-		?>	
-		
-		<br />
-		
-		<input type="submit" value="Zarejestruj się" />
-		
-	</form>    
 	    
-	</div>
 	<script src="../js/jquery.min.js"></script>
     <script src="../js/stickymenu.js"></script>
 

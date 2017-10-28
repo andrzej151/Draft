@@ -20,44 +20,48 @@
 </head>
 
 <body>
-	    <nav>
-	        
-			<ol>
-				<li><a href="#">Strona główna</a></li>
-				<li><a href="#">O Projekcie</a></li>
-                <li><a href="#">Projekty</a></li>
-                <li><a href="#">Kontakt</a></li>					
-			</ol>
-		    
-	    </nav>
-	    
-    <div id="container">
-	    <main>
-	        <div id="logowanie">
-                <a href="Rejestracja/rejestracja.php">
-                    <button>Rejestracja  załóż darmowe konto!</button>
-                </a>
-                
-	            <form action="Rejestracja/zaloguj.php" method="post">
-	                  <input type="text" name="login" placeholder="Login"/> 
-		              <input type="password" name="haslo" placeholder="Hasło"/> 
-		            <input type="submit" value="Zaloguj się" />
-		            <a href="Rejestracja/przypomnij_haslo.php">Przypomnij hasło!</a>
-	            </form>
-                <?php
-	               if(isset($_SESSION['blad']))	{
-                       echo '<div class="blad">';
-                       echo $_SESSION['blad'];
-                       echo '</div>';
-                   }
-                ?>
-	        </div>
-	        
-	   
-	       
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                DRAFT
+            </div>
+        </div>
+            <div class="nav">
+                <nav>
+                    <ol>
+                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="#">O Projekcie</a></li>
+                        <li><a href="#">Projekty</a></li>
+                        <li><a href="#">Kontakt</a></li>					
+			        </ol>
+                </nav>
+            </div>
+        
+        <div class="content">
+             <main>
+                <div id="logowanie">
+                    <a href="Rejestracja/rejestracja.php">
+                        <button>Rejestracja  załóż darmowe konto!</button>
+                    </a>
+
+                    <form action="Rejestracja/zaloguj.php" method="post">
+                          <input type="text" name="login" placeholder="Login"/> 
+                          <input type="password" name="haslo" placeholder="Hasło"/> 
+                        <input type="submit" value="Zaloguj się" />
+                        <a href="Rejestracja/przypomnij_haslo.php">Przypomnij hasło!</a>
+                    </form>
+                    <?php
+                       if(isset($_SESSION['blad']))	{
+                           echo '<div class="blad">';
+                           echo $_SESSION['blad'];
+                           echo '</div>';
+                       }
+                    ?>
+                </div>
 	    </main>
-	</div>
-	
+        </div>
+        
+   
 	
 
 	

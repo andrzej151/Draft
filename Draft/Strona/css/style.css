@@ -3,76 +3,141 @@ body{
     background-image: url("../img/dark_mosaic.png");
     font-size: 20px;
     color: #FFFFFF;
+    margin: 0 !
+}
+.wrapper{
+    width: 100%;
 }
 
-#container
+
+.header
 {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.logo
+{
+    width: 450px;
+    font-size: 48px;
+    border: 1px solid #ffffff;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
-    padding: 15px;
-    
 }
-nav{
+
+.nav{
     width: 100%;
 	padding: 10px 0;
 	background-color: #339933;
 	text-align: center;
-	border-top: 1px solid #227722;
-	border-bottom: 1px solid #227722;
+	border-top: 1px solid #116611;
+	border-bottom: 1px solid #116611;
+    
 }
 
-.sticky
-{
-	width: 100%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 100;
+.sticky{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
 }
 
 ol
 {
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
-	font-size: 18px;
-	height: 35px;
-	line-height: 200%;
-	display: inline-block;
-   
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 18px;
+    height: 35px;
+    line-height: 200%;   
+    display: inline-block;
 }
 
 ol a
 {
-	color: #ffffff;
-	text-decoration: none;
-	display: block;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
 }
 
-ol  li
+ol > li
 {
-	float: left;
-	width: 150px;
-	height: 40px;
-	border-right: 1px dashed #225522;
+    float: left;
+    width: 150px;
+    height: 40px;
+    border-right:  1px dashed #005500; 
 }
 
-ol  li:first-child
+ol > li:first-child
 {
-	border-left: 1px dashed #225522;
+     border-left: 1px dashed #005500; 
 }
 
-ol li:hover
+ol > li:hover{
+    background-color: #55BB55;
+}
+
+ol > li:hover > a{
+    color: #005500;
+    
+}
+
+ol > li:hover > ul
 {
-	background-color: #55AA55;
-}
+    display: block;
+} 
 
-ol  li:hover  a
+ol >li > ul
 {
-	color: #FFFFFF;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    display: none;
 }
 
+ol > li > ul > li
+{
+    background-color: #55BB55;
+    position: relative;
+    z-index: 100;
+    border-top: 1px dashed #005500;
+}
+
+ol > li > ul > li:hover
+{
+    background-color: #339933;
+}
+
+ol > li > ul > li:hover > a
+{
+    color: #005500;
+}
+
+
+.content
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    
+}
+
+.pole{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background: #DDDDDD;
+    width: 400px;
+    -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    text-align: left;
+    padding: 40px;
+    float: left;
+    color: #222222;
+}
 
 
 #logowanie
@@ -91,15 +156,16 @@ ol  li:hover  a
 
 #rejestracja
 {
-    margin-left: 40px;
-    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
     background: #DDDDDD;
-    width: 50%;
+    width: 400px;
     -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
     -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
     box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
-    text-align: center;
-    padding: 15px;
+    text-align: left;
+    padding: 40px;
     float: left;
     color: #222222;
 }
@@ -121,9 +187,54 @@ ol  li:hover  a
     transition: all 0.4s ese-in-out;
 }
 
+.btn-prim{
+    background-color: #2222AA;
+    width: 300px;
+    color:  white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s ese-in-out;
+}
+
+.btn-prim:hover{
+    background-color: #4444CC;
+    transform: scale(0.9);
+        
+}
+
+.btn-dgr{
+    background-color: #AA2222;
+    width: 300px;
+    color:  white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s ese-in-out;
+}
+
+.btn-dgr{
+    background-color: #CC4444;
+    transform: scale(0.9);
+}
+
 #logowanie button:hover{
     background-color: #3333BB;
-    transform: scale(1.1);
+    transform: scale(0.9);
 }
 
 input[type=text],
@@ -163,7 +274,7 @@ input[type=submit]:hover
 {
     width: 90%;
     background-color: #47c14d;
-    transform: scale(1.1);
+    transform: scale(0.9);
 }
 
 
@@ -172,6 +283,3 @@ a{
     text-decoration: none;
 }
 
-.g-recaptcha{
-    margin-left: 30%;
-}

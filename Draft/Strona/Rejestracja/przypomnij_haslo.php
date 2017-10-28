@@ -96,29 +96,57 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="../gra/gra.css">
 	<title>Draft - Przypomnij haslo</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-  <?php
-			if (isset($_SESSION['succes']))
-			{
-				echo '<div >'.$_SESSION['succes'].'</div>';
-				unset($_SESSION['succes']);
-			}
-		?>
-   <p>Przypomnij hasło</p>
-    <form action="" method="post">
-        	Podaj E-mail podany przy rejestracji: <br /> <input type="text"  name="email" /><br />
-		
-		<?php
-			if (isset($_SESSION['e_email']))
-			{
-				echo '<div class="error">'.$_SESSION['e_email'].'</div>';
-				unset($_SESSION['e_email']);
-			}
-		?>
-   
-   <input type="submit" value="Wyslij link" />
-    </form>
+
+	 <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                DRAFT
+            </div>
+        </div>
+            <div class="nav">
+                <nav>
+                    <ol>
+                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="#">O Projekcie</a></li>
+                        <li><a href="#">Projekty</a></li>
+                        <li><a href="#">Kontakt</a></li>					
+			        </ol>
+                </nav>
+            </div>
+        
+        <div class="content">
+            <div class="pole">
+                  <?php
+                        if (isset($_SESSION['succes']))
+                        {
+                            echo '<div >'.$_SESSION['succes'].'</div>';
+                            unset($_SESSION['succes']);
+                        }
+                    ?>
+               <p>Przypomnij hasło</p>
+                <form action="" method="post">
+                        Podaj E-mail podany przy rejestracji: <br /> <input type="text"  name="email" /><br />
+
+                    <?php
+                        if (isset($_SESSION['e_email']))
+                        {
+                            echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+                            unset($_SESSION['e_email']);
+                        }
+                    ?>
+
+               <input type="submit" value="Wyslij link" />
+                </form>
+            </div>
+         </div>
+    </div>
+	
+	<script src="../js/jquery.min.js"> </script>
+	<script src="../js/stickymenu.js"> </script>
+
 </body>
 </html>
