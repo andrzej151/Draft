@@ -31,14 +31,14 @@
                     <ol>
                         <li><a href="profil">Profil</a></li>
                         <li><a href="aktualnosci">Aktualności</a></li>
-                        <li>
+                        <li>Projekt
                             <ul>
                                 <li><a href="stworz-projekt">Stwórz</a></li>
                                 <li><a href="twoje-projekty">Twoje</a></li>
                                 <li><a href="wszystkie-projekty">Wszystkie</a></li>
                             </ul>
                         </li>
-                        <li><a href="zadania">Zadania</a></li>
+                        <li><a href="twoje-zadania">Zadania</a></li>
                         <li><a href="baza-wiedzy">Baza Wiedzy</a></li>
                         <li><a href="transakcje">Transakcje</a></li>
                         <li><a href="kontakt">Kontakt</a></li>
@@ -54,6 +54,7 @@
 	           ?>
 	     
          </div>
+    </div>
     </div>
 	
 	<script src="../js/jquery.min.js"> </script>
