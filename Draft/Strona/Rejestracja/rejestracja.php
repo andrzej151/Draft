@@ -149,7 +149,7 @@
 						$messeage = str_replace("[Imie]", $imie, $messeage);
 						$messeage = str_replace("[Nazwisko]", $nazwisko, $messeage);
 						$messeage = str_replace("[key]", $kod, $messeage);
-						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/rejestracja/aktywacja.php', $messeage);
+						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/aktywacja', $messeage);
 
 						$naglowki = "From: admin@and-dab.cba.pl\n" .
 									"Reply-To: admin@and-dab.cba.pl\n" .
@@ -158,7 +158,7 @@
 						if(mail($email, "Potwierdzenie maila", $messeage, $naglowki))
                         {
                             $_SESSION['udanarejestracja']=true;
-						      header('Location: witamy.php');
+						      header('Location: witamy');
                         }
                         else
                         {
@@ -194,7 +194,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - załóż darmowe konto!</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	
 </head>
@@ -219,7 +219,7 @@
         
         <div class="content">
                 <div id="rejestracja">
-                    <form method="post">
+                   <form action="rejestracja" method="post">
 
                         Login: <br /> <input type="text" value="<?php
                             if (isset($_SESSION['fr_nick']))
@@ -342,12 +342,14 @@
                         <input type="submit" value="Zarejestruj się" />
 
                     </form>    
+                    
          </div>
+    </div>
     </div>
 	
 	    
-	<script src="../js/jquery.min.js"></script>
-    <script src="../js/stickymenu.js"></script>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/stickymenu.js"></script>
 
 </body>
 </html>

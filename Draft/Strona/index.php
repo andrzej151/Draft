@@ -40,7 +40,7 @@
         <div class="content">
              <main>
                 <div id="logowanie">
-                    <a href="Rejestracja/rejestracja.php">
+                    <a href="rejestracja">
                         <button>Rejestracja  załóż darmowe konto!</button>
                     </a>
 
@@ -48,13 +48,14 @@
                           <input type="text" name="login" placeholder="Login"/> 
                           <input type="password" name="haslo" placeholder="Hasło"/> 
                         <input type="submit" value="Zaloguj się" />
-                        <a href="Rejestracja/przypomnij_haslo.php">Przypomnij hasło!</a>
+                        <a href="przypomnij-haslo">Przypomnij hasło!</a>
                     </form>
                     <?php
                        if(isset($_SESSION['blad']))	{
                            echo '<div class="blad">';
                            echo $_SESSION['blad'];
                            echo '</div>';
+                           unset($_SESSION['blad']);
                        }
                     ?>
                 </div>

@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - witamy</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
             <div class="pole">
                 Hasło zmienione!
 	
-	            <a href="../index.php"><button class="btn-prim">Zaloguj się na swoje konto!</button></a>
+	            <a href="index"><button class="btn-prim">Zaloguj się na swoje konto!</button></a>
 	            
             </div>
          </div>

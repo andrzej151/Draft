@@ -45,7 +45,7 @@
 						$messeage = str_replace("[Imie]", $imie, $messeage);
 						$messeage = str_replace("[Nazwisko]", $nazwisko, $messeage);
 						$messeage = str_replace("[key]", $kod, $messeage);
-						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/rejestracja/zmian_haslo.php', $messeage);
+						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/zmien-haslo', $messeage);
 
 						$naglowki = "From: admin@and-dab.cba.pl\n" .
 									"Reply-To: admin@and-dab.cba.pl\n" .
@@ -57,7 +57,7 @@
                         }
                         else
                         {
-                            echo("blad przy wysyłce maila");
+                            $_SESSION['e_email']="blad przy wysyłce maila";
                         }
 				    }		
 
@@ -65,10 +65,7 @@
                    
 						
 					}
-					else
-					{
-						throw new Exception($polaczenie->error);
-					}
+					
 					
 				}
 				
@@ -96,7 +93,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="../gra/gra.css">
 	<title>Draft - Przypomnij haslo</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -110,7 +107,7 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="index">Strona główna</a></li>
                         <li><a href="#">O Projekcie</a></li>
                         <li><a href="#">Projekty</a></li>
                         <li><a href="#">Kontakt</a></li>					
@@ -145,8 +142,8 @@
          </div>
     </div>
 	
-	<script src="../js/jquery.min.js"> </script>
-	<script src="../js/stickymenu.js"> </script>
+	<script src="js/jquery.min.js"> </script>
+	<script src="js/stickymenu.js"> </script>
 
 </body>
 </html>

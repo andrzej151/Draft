@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="../gra/gra.css">
 	<title>Draft - Aktywacja</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="#">Strona główna</a></li>
+                        <li><a href="index">Strona główna</a></li>
                         <li><a href="#">O Projekcie</a></li>
                         <li><a href="#">Projekty</a></li>
                         <li><a href="#">Kontakt</a></li>					
@@ -51,28 +51,27 @@
                                         $keyn = password_hash(rand(123, 12345), PASSWORD_DEFAULT);
                                         $polaczenie -> query('UPDATE `DUsers` SET `status` = "AKT", `kod` = "'.$keyn.'"  WHERE `kod`= "' . $key . '"');
 
-                                        echo('
-                                        Dziękujemy za rejestrację w serwisie i aktywacje!  Możesz już zalogować się na swoje konto!<br /><br />
-                                        <a href="../index.php"><button class="btn-prim">Zaloguj się na swoje konto!</button></a>
+                                        echo('                                        Dziękujemy za rejestrację w serwisie i aktywacje!  Możesz już zalogować się na swoje konto!<br /><br />
+                                        <a href="index"><button class="btn-prim">Strona główna</button></a>
                                         ');
 
 
                                     }
                                     else
                                     {
-                                        echo('Błedny klucz </br><a href="../index.php">Strona główna!</a>');
+                                        echo('<span class ="error">Błedny klucz </span><a href="index"><button class="btn-prim">Strona główna<button></a>');
                                     }
                                 }
                         }
 
                 ?>    
-            </div>
+    
          </div>
     </div>
 
 	
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/stickymenu.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/stickymenu.js"></script>
 
 </body>
 </html>

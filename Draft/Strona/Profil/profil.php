@@ -4,7 +4,7 @@
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
-		header('Location: ../index.php');
+		header('Location: index.php');
 		exit();
 	}
 	
@@ -29,19 +29,20 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Aktualności</a></li>
-                        <li><a href="#">Projekt</a>
+                        <li><a href="profil">Profil</a></li>
+                        <li><a href="aktualnosci">Aktualności</a></li>
+                        <li>
                             <ul>
-                                <li><a href="">Stwórz</a></li>
-                                <li><a href="">Twoje</a></li>
-                                <li><a href="">Wszystkie</a></li>
+                                <li><a href="stworz-projekt">Stwórz</a></li>
+                                <li><a href="twoje-projekty">Twoje</a></li>
+                                <li><a href="wszystkie-projekty">Wszystkie</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Zadania</a></li>
-                        <li><a href="">Baza Wiedzy</a></li>
-                        <li><a href="">Transakcje</a></li>
-                        <li><a href="#">Kontakt</a></li>					
+                        <li><a href="zadania">Zadania</a></li>
+                        <li><a href="baza-wiedzy">Baza Wiedzy</a></li>
+                        <li><a href="transakcje">Transakcje</a></li>
+                        <li><a href="kontakt">Kontakt</a></li>
+                        <li><a href="wyloguj-sie">Wyloguj sie</a></li>					
 			        </ol>
                 </nav>
             </div>
@@ -49,13 +50,9 @@
         <div class="content">
             <div class="pole">
             <?php
-
-	echo "<p>Witaj ".$_SESSION['imie']." ".$_SESSION['nazwisko']." ".$_SESSION['punkty'].'pkt! [ <a href="../Rejestracja/logout.php"><button class="btn-dgr">Wyloguj się!</button></a> ]</p>';
-	
- 
-	
-?>
-            </div>
+                echo "<p>Witaj ".$_SESSION['imie']." ".$_SESSION['nazwisko']." ".$_SESSION['punkty'].'pkt! </p>';   
+	           ?>
+	     
          </div>
     </div>
 	
