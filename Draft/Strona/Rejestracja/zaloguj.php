@@ -42,7 +42,7 @@
 				
 					unset($_SESSION['blad']);
 					$rezultat->free_result();
-					header('Location: ../profil');
+					header('Location: ../Profil/profil.php');
 				}
 				else 
 				{

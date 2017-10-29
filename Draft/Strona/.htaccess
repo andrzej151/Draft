@@ -19,7 +19,7 @@ RewriteRule haslo-zmieniono Rejestracja/zmiana.php
 RewriteRule profil Profil/profil.php
 RewriteRule wyloguj-sie Rejestracja/logout.php
 RewriteRule aktualnosci Profil/aktualnosci.php
-RewriteRule stworz-projekt Projekt/stworz_projekt.php
+RewriteRule stworzprojekt Projekt/stworzprojekt.php
 RewriteRule twoje-projekty Projekt/twoje_projekty.php
 RewriteRule wszystkie-projekty Projekt/wszystkie_projekty.php
 RewriteRule projekt Projekt/projekt.php

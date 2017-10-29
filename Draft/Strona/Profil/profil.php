@@ -15,7 +15,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - Profil</title>
-    <link rel="stylesheet" href="Draft/style">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -29,20 +29,20 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="profil">Profil</a></li>
-                        <li><a href="aktualnosci">Aktualności</a></li>
+                        <li><a href="profil.php">Profil</a></li>
+                        <li><a href="aktualnosci.php">Aktualności</a></li>
                         <li>Projekt
                             <ul>
-                                <li><a href="stworz-projekt">Stwórz</a></li>
-                                <li><a href="twoje-projekty">Twoje</a></li>
-                                <li><a href="wszystkie-projekty">Wszystkie</a></li>
+                                <li><a href="../Projekt/stworz_projekt.php">Stwórz</a></li>
+                                <li><a href="../Projekt/twoje_projekty.php">Twoje</a></li>
+                                <li><a href="../Projekt/wszystkie_projekty.php">Wszystkie</a></li>
                             </ul>
                         </li>
-                        <li><a href="twoje-zadania">Zadania</a></li>
-                        <li><a href="baza-wiedzy">Baza Wiedzy</a></li>
-                        <li><a href="transakcje">Transakcje</a></li>
-                        <li><a href="kontakt">Kontakt</a></li>
-                        <li><a href="Draft/wyloguj-sie">Wyloguj sie</a></li>					
+                        <li><a href="../Zadania/twoje_zadania.php">Zadania</a></li>
+                        <li><a href="../Baza%20wiedzy/baza-wiedzy.php">Baza Wiedzy</a></li>
+                        <li><a href="../Transakcje/twoje_transakcje.php">Transakcje</a></li>
+                        <li><a href="../Info/kontakt.php">Kontakt</a></li>
+                        <li><a href="../Rejestracja/logout.php">Wyloguj sie</a></li>					
 			        </ol>
                 </nav>
             </div>
@@ -57,8 +57,8 @@
     </div>
     </div>
 	
-	<script src="Draft/jquery"> </script>
-	<script src="Draft/stickymenu"> </script>
+	<script src="../js/jquery.min.js"> </script>
+	<script src="../js/stickymenu.js"> </script>
 
 
 </body>

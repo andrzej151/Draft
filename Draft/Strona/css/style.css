@@ -154,6 +154,22 @@ ol > li > ul > li:hover > a
     float: right;
 }
 
+#projekt
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background: #DDDDDD;
+    width: 600px;
+    -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    text-align: left;
+    padding: 40px;
+    color: #222222;
+}
+
+
 #rejestracja
 {
     margin-left: auto;
@@ -170,7 +186,7 @@ ol > li > ul > li:hover > a
     color: #222222;
 }
 
-#logowanie button{
+button{
     background-color: #2222AA;
     width: 300px;
     color:  white;
@@ -232,14 +248,26 @@ ol > li > ul > li:hover > a
     transform: scale(0.9);
 }
 
-#logowanie button:hover{
+ button:hover{
     background-color: #3333BB;
     transform: scale(0.9);
 }
 
 input[type=text],
 input[type=password]{
-    width: 300px;
+    width: 80%;
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+textarea{
+    width: 80%;
 	background-color: #efefef;
 	color: #666;
 	border: 2px solid #ddd;
@@ -261,9 +289,18 @@ input[type=password]:focus
 	color: #428c42;
 }
 
+textarea:focus{
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	border: 2px solid #a5cda5;
+	background-color: #e9f3e9;
+	color: #428c42;
+}
+
 input[type=submit]
 {
-	width: 300px;
+	width: 80%;
 	background-color: #36b03c;
 	font-size:20px;
 	color: white;
@@ -324,6 +361,8 @@ input:focus:-ms-input-placeholder
     color: #428C42;
 }
 
+
+
 .error
 {
     color: red;
@@ -335,4 +374,5 @@ a{
     color:  #000000;
     text-decoration: none;
 }
+
 
