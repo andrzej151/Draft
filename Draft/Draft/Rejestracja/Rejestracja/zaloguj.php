@@ -4,7 +4,7 @@
 	
 	if ((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
 	{
-		header('Location: ../index');
+		header('Location: ../index.php');
 		exit();
 	}
 
@@ -24,7 +24,7 @@
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
 	
 		if ($rezultat = @$polaczenie->query(
-		sprintf("SELECT * FROM DUsers WHERE login='%s' AND status='AKT'",
+		sprintf("SELECT * FROM DUsers WHERE login='%s'",
 		mysqli_real_escape_string($polaczenie,$login))))
 		{
 			$ilu_userow = $rezultat->num_rows;
@@ -42,18 +42,18 @@
 				
 					unset($_SESSION['blad']);
 					$rezultat->free_result();
-					header('Location: ../profil');
+					header('Location: ../Profil/gra.php');
 				}
 				else 
 				{
-					$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login hasło lub konto nie aktywne!</span>';
-					header('Location: ../index');
+					$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+					header('Location: ../index.php');
 				}
 				
 			} else {
 				
-				$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login hasło lub konto nie aktywne</span>';
-				header('Location: ../index');
+				$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+				header('Location: ../index.php');
 				
 			}
 			

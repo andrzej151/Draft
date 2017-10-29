@@ -4,7 +4,7 @@
 	
 	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
 	{
-		header('Location: Draft/profil');
+		header('Location: Profil/profil.php');
 		exit();
 	}
 
@@ -29,7 +29,7 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="../Draft/index">Strona główna</a></li>
+                        <li><a href="#">Strona główna</a></li>
                         <li><a href="#">O Projekcie</a></li>
                         <li><a href="#">Projekty</a></li>
                         <li><a href="#">Kontakt</a></li>					
@@ -40,15 +40,15 @@
         <div class="content">
              <main>
                 <div id="logowanie">
-                    <a href="../Draft/rejestracja">
+                    <a href="rejestracja">
                         <button>Rejestracja  załóż darmowe konto!</button>
                     </a>
 
-                    <form action="../Draft/Rejestracja/zaloguj.php" method="post">
+                    <form action="Rejestracja/zaloguj.php" method="post">
                           <input type="text" name="login" placeholder="Login"/> 
                           <input type="password" name="haslo" placeholder="Hasło"/> 
                         <input type="submit" value="Zaloguj się" />
-                        <a href="../Draft/przypomnij-haslo">Przypomnij hasło!</a>
+                        <a href="przypomnij-haslo">Przypomnij hasło!</a>
                     </form>
                     <?php
                        if(isset($_SESSION['blad']))	{
@@ -62,11 +62,11 @@
 	    </main>
         </div>
         
-    </div>
+   
 	
 
 	
-<script src="Draft/jquery"></script>
-<script src="Draft/stickymenu"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/stickymenu.js"></script>
 </body>
 </html>

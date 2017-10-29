@@ -194,7 +194,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - załóż darmowe konto!</title>
-	<link rel="stylesheet" href="Draft/style">
+	<link rel="stylesheet" href="css/style.css">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	
 </head>
@@ -209,7 +209,7 @@
             <div class="nav">
                 <nav>
                     <ol>
-                        <li><a href="index">Strona główna</a></li>
+                        <li><a href="#">Strona główna</a></li>
                         <li><a href="#">O Projekcie</a></li>
                         <li><a href="#">Projekty</a></li>
                         <li><a href="#">Kontakt</a></li>					
@@ -219,7 +219,7 @@
         
         <div class="content">
                 <div id="rejestracja">
-                   <form action="" method="post">
+                   <form action="rejestracja" method="post">
 
                         Login: <br /> <input type="text" value="<?php
                             if (isset($_SESSION['fr_nick']))
@@ -348,8 +348,8 @@
     </div>
 	
 	    
-	<script src="Draft/jquery"></script>
-    <script src="Draft/stickymenu"></script>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/stickymenu.js"></script>
 
 </body>
 </html>

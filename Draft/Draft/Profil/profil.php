@@ -4,7 +4,7 @@
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
-		header('Location: Draft/index');
+		header('Location: index.php');
 		exit();
 	}
 	
@@ -15,7 +15,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Draft - Profil</title>
-    <link rel="stylesheet" href="Draft/style">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                         <li><a href="baza-wiedzy">Baza Wiedzy</a></li>
                         <li><a href="transakcje">Transakcje</a></li>
                         <li><a href="kontakt">Kontakt</a></li>
-                        <li><a href="Draft/wyloguj-sie">Wyloguj sie</a></li>					
+                        <li><a href="wyloguj-sie">Wyloguj sie</a></li>					
 			        </ol>
                 </nav>
             </div>
@@ -57,8 +57,8 @@
     </div>
     </div>
 	
-	<script src="Draft/jquery"> </script>
-	<script src="Draft/stickymenu"> </script>
+	<script src="../js/jquery.min.js"> </script>
+	<script src="../js/stickymenu.js"> </script>
 
 
 </body>

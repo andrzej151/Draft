@@ -8,8 +8,8 @@ RewriteEngine on
 RewriteRule draft index.php
 RewriteRule index index.php
 RewriteRule zaloguj index.php
+RewriteRule login Rejestracja/zaloguj.php
 RewriteRule zaloguj-sie index.php
-RewriteRule Rejestracja/index index.php
 RewriteRule rejestracja Rejestracja/rejestracja.php
 RewriteRule aktywacja Rejestracja/aktywacja.php
 RewriteRule przypomnij-haslo Rejestracja/przypomnij_haslo.php
@@ -45,3 +45,6 @@ RewriteRule uwaga-do-zadania Uwagi/uwaga_do_zadania.php
 RewriteRule uwaga-przeanalizowana Uwagi/uwaga_przeanalizowana.php
 RewriteRule kontakt Info/kontakt.php
 RewriteRule baza-wiedzy Info/baza_wiedzy.php
+RewriteRule style css/style.css
+RewriteRule jquery js/jquery.min.js
+RewriteRule stickymenu js/stickymenu.js
