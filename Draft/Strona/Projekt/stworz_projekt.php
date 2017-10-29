@@ -102,6 +102,7 @@
 				        $dane = $dane->fetch_assoc();
 				        $idproj = $dane['id'];
                         if ($polaczenie->query("INSERT INTO DLiderzy VALUES ('$idproj', '$id')")){
+                            if ($polaczenie->query("INSERT INTO DUczestnProj VALUES ('$idproj', '$id')")){
                                 
                                 $dane = $polaczenie->query("SELECT imie, nazwisko, email  FROM `DUsers`  WHERE id='$id'" ); 
 				                $dane = $dane->fetch_assoc();
@@ -129,8 +130,9 @@
                                 {
                                     $_SESSION['e_error']="blad przy wysyłce maila";
                                 }
-                                
+                            
                             }
+                        }
                         
 					}
 					else

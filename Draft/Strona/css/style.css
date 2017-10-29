@@ -394,3 +394,27 @@ a{
 }
 
 
+
+#navbox {
+    width: 20%;
+    padding: 5px;
+    position: fixed;
+    background: #DDDDDD;
+    color: #111111;
+    right: 25px;
+    top: 250px;
+    z-index: 100;
+    -webkit-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    -moz-box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    box-shadow: 6px 6px 20px 2px rgba(156,150,156,1);
+    text-align: center;
+    
+    
+}
+
+
+
+
+
+
+
