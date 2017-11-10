@@ -1,20 +1,11 @@
-var pobierzProjekty = function () {
-    var ret;
-        $.ajax({
-            type: 'GET',
-            url: 'http://and-dab.cba.pl/Draft/Projekt/wszystkie_projekty_dane.php',
-            dataType: "json",
-            success: function (data) {
-                ret = data;
-
-            }
-        });
-    return ret;
-}
-
+(function(){
 var app = angular.module('myApp', []);
-app.controller('ProjCon', ['$scope', '$filter', function ($scope, $filter) {
-$scope.projekty = pobierzProjekty;
+app.controller('WszystkieProjekty', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+
+    $http.get('http://and-dab.cba.pl/Draft/Projekt/wszystkie_projekty_dane.php').success(
+        function (data) {
+            $scope.projekty = data;
+        });
+
     	}]);
-
-
+})();

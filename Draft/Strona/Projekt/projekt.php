@@ -23,6 +23,7 @@ $idprojektu=$_GET['id'];
 		
 		try 
 		{
+            //statusy
 			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
 			if ($polaczenie->connect_errno!=0)
 			{
@@ -32,6 +33,8 @@ $idprojektu=$_GET['id'];
 			{
                 $idprojektu=$_GET['id'];
                 $idusera=$_SESSION['id'];
+                
+                
                 $rezultat = $polaczenie->query("SELECT idproj FROM DUczestnProj WHERE idproj='$idprojektu' AND idusera='$idusera'");
 				
 				if (!$rezultat) throw new Exception($polaczenie->error);
@@ -70,6 +73,7 @@ $idprojektu=$_GET['id'];
                     $b_lider=false;
                     
                 }
+                
 				
 				
 				$polaczenie->close();
@@ -80,6 +84,50 @@ $idprojektu=$_GET['id'];
 		{
 			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności!</span>';
 			echo '<br />Informacja developerska: '.$e;
+		}
+        
+        
+        $projekt;
+		try 
+		{
+            mysqli_report(MYSQLI_REPORT_STRICT);
+			mysql_connect($host,$db_user,$db_password); 
+			mysql_select_db($db_name); 
+			//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			//$polaczenie->set_charset("utf8");
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+                $sql=mysql_query("SELECT * FROM DProjekty WHERE id ='$idprojektu'");
+                while($row=mysql_fetch_assoc($sql)){ 
+				$projekt[]=$row; 
+                    
+                
+                    if($projekt[0]["status"]=="DOTOWANIE") $status=0;
+                    else
+                    if($projekt[0]["status"]=="REALIZACJA") $status=1;
+                    else
+                    if($projekt[0]["status"]=="ZAKONCZONY") $status=2;
+                    else
+                    if($projekt[0]["status"]=="ZAWIESZONY") $status=3;
+                    else
+                    if($projekt[0]["status"]=="ZGŁOSZONY") $status=4;
+                    
+				}
+				
+                        	
+				}
+				
+
+			}
+			
+		
+		catch(Exception $e)
+		{
+			
 		}
         
     }
@@ -109,7 +157,7 @@ $idprojektu=$_GET['id'];
             <div class="nav">
                 <nav>
                     <ol>
-                       <?php
+                        <?php
                         if($b_urzytkownik){
                             echo('
                                 <li><a href="profil.php">Profil</a></li>
@@ -136,104 +184,204 @@ $idprojektu=$_GET['id'];
                                 );
                         }
                         ?>
-                        
+
                     </ol>
+
                     <div id="navbox">
-                        
-                            <ul>
-                               <h4>NAWIGACJA</h4>
-                                <a href="projekt#tytul?id=<?php echo($idprojektu);?>">
-                                    <li>Tytuł</li>
-                                </a>
-                                <a href="projekt#opis?id=<?php echo($idprojektu);?>">
-                                    <li>Opis</li>
-                                </a>
-                                <a href="projekt#uczestnicy?id=<?php echo($idprojektu);?>">
-                                    <li>Uczestnicy</li>
-                                </a>
-                                <a href="projekt#zadania?id=<?php echo($idprojektu);?>">
-                                    <li>Zadania</li>
-                                </a>
-                                <a href="projekt#uwagi?id=<?php echo($idprojektu);?>">
-                                    <li>Uwagi</li>
-                                </a>
-                                <a href="projekt#zakonczenie?id=<?php echo($idprojektu);?>">
-                                    <li>Zakonczenie</li>
-                                </a>
-                            </ul>
-                        
-                            <ul>
-                               <h4>AKCJE</h4>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                                <a href="">
-                                    <li></li>
-                                </a>
-                            </ul>
-                        </div>
-                    
+
+                        <ul>
+                            <h4>NAWIGACJA</h4>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#logo">
+                                <li>Tytuł</li>
+                            </a>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#opis">
+                                <li>Opis</li>
+                            </a>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#uczestnicy">
+                                <li>Uczestnicy</li>
+                            </a>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#zadania">
+                                <li>Zadania</li>
+                            </a>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#uwagi">
+                                <li>Uwagi</li>
+                            </a>
+                            <a href="projekt.php?id=<?php echo($idprojektu);?>#zakonczenie">
+                                <li>Zakonczenie</li>
+                            </a>
+                        </ul>
+
+                        <ul>
+                            <h4>AKCJE</h4>
+                            <?php 
+                                    if($b_urzytkownik){
+                                        if($status<2)
+                                        {
+                                            echo( '<a href="../Transakcje/dotuj.php?idproj='.$idprojektu.'">
+                                               <li>Dotuj Projekt</li>
+                                            </a>');
+                                        }
+                                    }
+                                ?>
+                            <?php 
+                                    if($b_urzytkownik){
+                                        if($status<2)
+                                        {
+                                            echo( '<a href="../Uwagi/uwaga_do_projektu.php?idproj='.$idprojektu.'">
+                                            <li>Uwagi do Projektu</li>
+                                            </a>');
+                                        }
+                                    }
+                                ?>
+                            <?php 
+                                    if($b_urzytkownik){
+                                        if($status<2)
+                                        {
+                                            if(!$b_uczestnik){
+                                                 echo( '<a href="dolacz.php?idproj='.$idprojektu.'">
+                                                    <li>Dołacz do Projektu</li>
+                                                    </a>');
+                                            }else
+                                            {
+                                                echo( '<a href="odejdz.php?idproj='.$idprojektu.'">
+                                                    <li>Odejdź z Projektu</li>
+                                                    </a>');
+                                            }
+                                        }
+                                    }?>
+                            <?php 
+                                    if($b_lider){
+                                        if($status<2)
+                                        {
+                                             echo( '<a href="edytuj_projekt.php?id="'.$idprojektu.'>
+                                            <li>Edytuj Projekt</li>
+                                            </a>');}};
+                                        ?>
+                            <?php 
+                                    if($b_lider){
+                                        if($status<2)
+                                        {
+                                             echo( '<a href="dodaj_lidera.php?id="'.$idprojektu.'>
+                                            <li>Dodaj lidera</li>
+                                            </a>');}};
+                                ?>
+                            <?php 
+                                    if($b_lider){
+                                        if($status==0)
+                                        {
+                                             echo( '<a href="etap_realizacja.php?id="  '.$idprojektu.'><li>Przejdź do realizacji</li>
+                                                </a>');}};
+                                ?>
+                                 <?php 
+                                    if($b_lider){
+                                        if($status==1)
+                                        {
+                                             echo( '<a href="etap_dotowanie.php?id="  '.$idprojektu.'><li>Przejdź do dotowania</li>
+                                                </a>');}};
+                                ?>
+                                  <?php 
+                                    if($b_lider){
+                                        if($status==1)
+                                        {
+                                             echo( '<a href="etap_zakoncz.php?id="  '.$idprojektu.'><li>Zakończ Projekt</li>
+                                                </a>');}};
+                                ?>
+                                  <?php 
+                                    if($b_lider){
+                                        if($status<2)
+                                        {
+                                             echo( '<a href="etap_zawies.php?id="  '.$idprojektu.'><li>Zawieś Projekt</li>
+                                                </a>');}};
+                                ?>
+                                  <?php 
+                                    if($b_lider){
+                                        if($status==1)
+                                        {
+                                             echo( '<a href="stworz_spotkanie.php?id="  '.$idprojektu.'><li>Stwórz Spotkanie</li>
+                                                </a>');}};
+                                ?>
+                                 <?php 
+                                    if($b_lider){
+                                        if($status==1)
+                                        {
+                                             echo( '<a href="../Zadania/stworz_zadanie.php?id=" '.$idprojektu.'><li>Stwórz Zadanie</li>
+                                                </a>');}};
+                                ?>
+                        </ul>
+                    </div>
+
                 </nav>
             </div>
             <div class="content">
                 <main>
-                    <div id="tytul">
+                    <div id="tytul" class="box">
                         <div class="box2">
-                            <h2>nazwa</h2> 
-                            <h4>status</h4>
+                            <h2>Nazwa:
+                                <?php 
+                                echo($projekt[0]["nazwa"]);
+                                ?>
+                            </h2>
+                            <h4>
+                                <?php 
+                                echo($projekt[0]["status"]);
+                                ?>
+                            </h4>
                         </div>
                         <div class="box2">
-                            <h4>Punkty: </h4>
-                            <h4>Data utworzenia:</h4>
-                            <h4>Data zakonczenia:</h4>
+                            <h4>Punkty:
+                                <?php 
+                                echo($projekt[0]["punkty"]."/".$projekt[0]["punktyWydane"]);
+                                
+                                ?>
+                            </h4>
+                            <h4>Data utworzenia:
+                                <?php 
+                                echo($projekt[0]["DataZl"]);
+                                ?>
+                            </h4>
+                            <h4>Data zakonczenia:
+                                <?php 
+                                if($projekt[0]["nazwa"]!=NULL)
+                                echo($projekt[0]["nazwa"]);
+                                ?>
+                            </h4>
+
                         </div>
                     </div>
-                    <div id="opis">
+                    <div id="opis" class="box">
                         <div class="box1">
                             <h3>Cel:</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus molestiae est libero labore illo. Amet vero, sunt aperiam eveniet dolores quasi ex quisquam ducimus doloremque eius, dicta nemo quos unde.</p>
+                            <p>
+                                <?php 
+                                echo($projekt[0]["opisK"]);
+                                ?>
+                            </p>
                         </div>
                         <div class="box1">
                             <h3>Opis:</h3>
-                            <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repudiandae eos recusandae voluptatibus optio aut! Tempore velit dolores sit, officia non quod alias, deleniti, qui porro magni commodi, quis praesentium?</span>
-                            <span>Eaque nihil eligendi eius, non ab ea similique cupiditate iure dolor odio facilis, quos quis. Rerum dolor eaque, explicabo minima inventore vero suscipit eveniet natus corporis expedita fugiat incidunt ducimus!</span>
-                            <span>Voluptates magni, omnis non, a itaque cupiditate sunt! Repudiandae delectus at numquam tempora placeat nemo distinctio dicta est enim, debitis ipsa, dolores iste ipsam accusamus ratione a magnam, quasi unde!</span></p>
+                            <p>
+                                <?php 
+                                echo($projekt[0]["opisD"]);
+                                ?>
+                            </p>
                         </div>
                         <div class="box1">
-                            <a href="">
+                            <a href="<?php 
+                                echo($projekt[0][" linkOpis "]);
+                                ?>">
                                 <h3>Link do innych szczegółow</h3>
                             </a>
                         </div>
                         <div class="box1">
                             <h3>Benefity</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae assumenda veniam iusto, eligendi animi officiis minus? Esse quibusdam asperiores sunt, cupiditate, ab, dignissimos quo officia id delectus possimus, eos voluptas.</p>
+                            <p>
+                                <?php 
+                                echo($projekt[0]["benefityOpis"]);
+                                ?>
+                            </p>
                         </div>
                     </div>
-                    <div id="uczestnicy">
+                    <div id="uczestnicy" class="box">
                         <h3>Liderzy</h3>
                         <div class="box3">
                             <div class="osoba"></div>
@@ -243,31 +391,24 @@ $idprojektu=$_GET['id'];
                         <h3>Uczestnicy</h3>
                         <div class="box3">
                             <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
-                            <div class="osoba"></div>
+
                         </div>
                     </div>
-                    <div id="zadania">
+                    <div id="zadania" class="box">
                         <h3>Zadania</h3>
                         <tabela></tabela>
                     </div>
-                    <div id="uwagi">
+                    <div id="uwagi" class="box">
                         <h3>Uwagi</h3>
                     </div>
-                    <div id="zakonczenie">
+                    <div id="zakonczenie" class="box">
                         <h3>podsumowanie Projektu:</h3>
                     </div>
-                    
+
                 </main>
             </div>
-                 
-            </div>
+
+        </div>
         </div>
 
         <script src="Draft/jquery">

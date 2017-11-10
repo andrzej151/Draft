@@ -4,7 +4,7 @@
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
-		header('Location: Draft/index');
+		header('Location: Draft/');
 		exit();
 	}
 	
@@ -96,7 +96,7 @@
 				{
                     
                     
-					if ($polaczenie->query("INSERT INTO DProjekty VALUES (NULL, '$nazwa', '$opisk', '$opisd','$link', '$benefity', 0, 0, NULL, 'DOT', NULL, NULL)"))
+					if ($polaczenie->query("INSERT INTO DProjekty VALUES (NULL, '$nazwa', '$opisk', '$opisd','$link', '$benefity', 0, 0, NULL, 'DOTOWANIE', NULL, NULL)"))
 					{
                         $dane = $polaczenie->query("SELECT id FROM `DProjekty`  WHERE nazwa='$nazwa'" ); 
 				        $dane = $dane->fetch_assoc();

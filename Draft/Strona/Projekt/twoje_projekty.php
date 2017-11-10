@@ -1,4 +1,16 @@
+<?php
+  	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: Draft/');
+		exit();
+	}
 
+
+?>
+
+   
     <!DOCTYPE HTML>
     <html lang="pl">
 
@@ -41,19 +53,19 @@
 
             <div class="content">
 
-                <div ng-controller='WszystkieProjekty'>
+                <div ng-controller='TwojeProjektyLider'>
                    <div class="wyszukiwarka">
-                       <h1>Wszystkie Projekty</h1><br/>
-                        <input type="text" placeholder="Czego szukasz ogolnie?" ng-model="wyszukiwarka">
+                       <h1>Twoje projekty w których jesteś liderem </h1>
+                        <input type="text" placeholder="Czego szukasz ogolnie?" ng-model="wyszukiwarkalider">
                    </div>
                    <div class="wyszukiwarka">                       
-                        <input type="text" placeholder="Szukasz po nazwie?" ng-model="wyszukiwarka.nazwa">
+                        <input type="text" placeholder="Szukasz po nazwie?" ng-model="wyszukiwarkalider.nazwa">
                    </div>
                     <div class="wyszukiwarka">                       
-                        <input type="text" placeholder="Szukasz po statusie?" ng-model="wyszukiwarka.status">
+                        <input type="text" placeholder="Szukasz po statusie?" ng-model="wyszukiwarkalider.status">
                    </div>
                    
-                   <div class="projekt" ng-repeat="projekt in projekty| filter : wyszukiwarka">
+                   <div class="projekt" ng-repeat="projekt in projektylider| filter : wyszukiwarkalider">
                         <h3>Nazwa: {{ projekt.nazwa }}</h3>
                         <p>Cel: {{ projekt.opisK }}</p>
                         <div class="statystyka">
@@ -69,10 +81,39 @@
                         </a>   
                                 
                    </div>
-                    
-
-
                 </div>
+                
+                 <div ng-controller='TwojeProjektyUczestnik'>
+                   <div class="wyszukiwarka">
+                       <h1>Twoje projekty w których jesteś Uczestnikiem </h1><br/>
+                        <input type="text" placeholder="Czego szukasz ogolnie?" ng-model="wyszukiwarkauczestnik">
+                   </div>
+                   <div class="wyszukiwarka">                       
+                        <input type="text" placeholder="Szukasz po nazwie?" ng-model="wyszukiwarkauczestnik.nazwa">
+                   </div>
+                    <div class="wyszukiwarka">                       
+                        <input type="text" placeholder="Szukasz po statusie?" ng-model="wyszukiwarkauczestnik.status">
+                   </div>
+                   
+                   <div class="projekt" ng-repeat="projekt in projektyuczestnik| filter : wyszukiwarkauczestnik">
+                        <h3>Nazwa: {{ projekt.nazwa }}</h3>
+                        <p>Cel: {{ projekt.opisK }}</p>
+                        <div class="statystyka">
+                            Punkty: {{ projekt.punkty }}/{{ projekt.punktyWydane }}<br/>
+                            Status: {{ projekt.status }}<br/>
+                            Data załorzenia: {{ projekt.DataZl }}
+                        </div>
+
+                        <a href="projekt.php?id={{ projekt.id }}">
+                            <button class="btn-prim">
+                                Zobacz projekt!
+                            </button>
+                        </a>   
+                                
+                   </div>
+                </div>
+                
+                
             </div>
         </div>
 
@@ -86,7 +127,7 @@
         </script>
         <script src="../js/angular.min.js">
         </script>
-          <script src="../js/wszystkie_projekty.js">
+          <script src="../js/twoje_projekty.js">
         </script>
         
         
