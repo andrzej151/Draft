@@ -1,12 +1,12 @@
 <?php
     session_start();
-    if (!isset($_GET['id']))
+    if (!isset($_GET['idproj']))
 	{
         //bez nr projektu
 		header('Location: wszystkie_projekty.php');
 		exit();
 	}
-$idprojektu=$_GET['id'];
+$idprojektu=$_GET['idproj'];
  
 	
 	if (!isset($_SESSION['zalogowany']))
@@ -31,7 +31,7 @@ $idprojektu=$_GET['id'];
 			}
 			else
 			{
-                $idprojektu=$_GET['id'];
+                
                 $idusera=$_SESSION['id'];
                 
                 
@@ -146,7 +146,7 @@ $idprojektu=$_GET['id'];
         <link rel="stylesheet" href="../css/style.css">
     </head>
 
-    <body ng-app='myApp'>
+    <body >
 
         <div class="wrapper">
             <div class="header">
@@ -191,22 +191,22 @@ $idprojektu=$_GET['id'];
 
                         <ul>
                             <h4>NAWIGACJA</h4>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#logo">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#logo">
                                 <li>Tytuł</li>
                             </a>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#opis">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#opis">
                                 <li>Opis</li>
                             </a>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#uczestnicy">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#uczestnicy">
                                 <li>Uczestnicy</li>
                             </a>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#zadania">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#zadania">
                                 <li>Zadania</li>
                             </a>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#uwagi">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#uwagi">
                                 <li>Uwagi</li>
                             </a>
-                            <a href="projekt.php?id=<?php echo($idprojektu);?>#zakonczenie">
+                            <a href="projekt.php?idproj=<?php echo($idprojektu);?>#zakonczenie">
                                 <li>Zakonczenie</li>
                             </a>
                         </ul>
@@ -253,7 +253,7 @@ $idprojektu=$_GET['id'];
                                     if($b_lider){
                                         if($status<2)
                                         {
-                                             echo( '<a href="edytuj_projekt.php?id="'.$idprojektu.'>
+                                             echo( '<a href="edytuj_projekt.php?id='.$idprojektu.'">
                                             <li>Edytuj Projekt</li>
                                             </a>');}};
                                         ?>
@@ -269,28 +269,28 @@ $idprojektu=$_GET['id'];
                                     if($b_lider){
                                         if($status==0)
                                         {
-                                             echo( '<a href="etap_realizacja.php?id="  '.$idprojektu.'><li>Przejdź do realizacji</li>
+                                             echo( '<a href="etap_realizacja.php?idproj='.$idprojektu.'"><li>Przejdź do realizacji</li>
                                                 </a>');}};
                                 ?>
                             <?php 
                                     if($b_lider){
                                         if($status==1)
                                         {
-                                             echo( '<a href="etap_dotowanie.php?id="  '.$idprojektu.'><li>Przejdź do dotowania</li>
+                                             echo( '<a href="etap_dotowanie.php?idproj='.$idprojektu.'"><li>Przejdź do dotowania</li>
                                                 </a>');}};
                                 ?>
                             <?php 
                                     if($b_lider){
                                         if($status==1)
                                         {
-                                             echo( '<a href="etap_zakoncz.php?id="  '.$idprojektu.'><li>Zakończ Projekt</li>
+                                             echo( '<a href="etap_zakoncz.php?idproj='.$idprojektu.'"><li>Zakończ Projekt</li>
                                                 </a>');}};
                                 ?>
                             <?php 
                                     if($b_lider){
                                         if($status<2)
                                         {
-                                             echo( '<a href="etap_zawies.php?id="  '.$idprojektu.'><li>Zawieś Projekt</li>
+                                             echo( '<a href="etap_zawies.php?idproj='.$idprojektu.'"><li>Zawieś Projekt</li>
                                                 </a>');}};
                                 ?>
                             <?php 
@@ -381,43 +381,45 @@ $idprojektu=$_GET['id'];
                             </p>
                         </div>
                     </div>
-                    <div id="uczestnicy" class="box" ng-app='AppUczestnicy'>
+                    <div id="uczestnicy">
+                        <div ng-app='AppUczestnicy'>
+
+                            <div ng-controller='Liderzy'>
+
+                                <div class="box">
+                                    <div class="wyszukiwarka">
+                                        <h1>Liderzy</h1><br/>
+                                        <input type="text" placeholder="Kogo szukasz?" ng-model="wyszukiwarkalider">
+                                    </div>
+
+                                    <div class="projekt" ng-repeat="lider in liderzy| filter : wyszukiwarkalider">
+                                        <h3>Imię: {{ lider.imie }}</h3>
+                                        <h3>Nazwisko: {{ lider.nazwisko }}</h3>
+
+                                    </div>
 
 
-                        <div ng-controller='Liderzy'>
-
-                            <div class="box">
-                                <div class="wyszukiwarka">
-                                    <h1>Liderzy</h1><br/>
-                                    <input type="text" placeholder="Kogo szukasz?" ng-model="wyszukiwarkalider">
                                 </div>
+                            </div>
 
-                                <div class="projekt" ng-repeat="lider in liderzy| filter : wyszukiwarkalider">
-                                    <h3>Imię: {{ lider.imie }}</h3>
-                                    <h3>Nazwisko: {{ lider.nazwisko }}</h3>
+                            <div ng-controller='Uczestnicy'>
+                                <div class="box">
+                                    <div class="wyszukiwarka">
+                                        <h1>Uczestnicy</h1><br/>
+                                        <input type="text" placeholder="Kogo szukasz?" ng-model="wyszukiwarkauczestnik">
+                                    </div>
+
+
+                                    <div class="projekt" ng-repeat="uczestnik in uczestnicy| filter : wyszukiwarkauczestnik">
+                                        <h3>Imię: {{ uczestnik.imie }}</h3>
+                                        <h3>Nazwisko: {{ uczestnik.nazwisko }}</h3>
+
+                                    </div>
 
                                 </div>
-
-
                             </div>
                         </div>
 
-                        <div ng-controller='Uczestnicy'>
-                            <div class="box">
-                                <div class="wyszukiwarka">
-                                    <h1>Uczestnicy</h1><br/>
-                                    <input type="text" placeholder="Kogo szukasz?" ng-model="wyszukiwarkauczestnik">
-                                </div>
-
-
-                                <div class="projekt" ng-repeat="uczestnik in uczestnicy| filter : wyszukiwarkauczestnik">
-                                    <h3>Imię: {{ uczestnik.imie }}</h3>
-                                    <h3>Nazwisko: {{ uczestnik.nazwisko }}</h3>
-
-                                </div>
-
-                            </div>
-                        </div>
 
                     </div>
 

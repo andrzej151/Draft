@@ -62,7 +62,7 @@
                             Data załorzenia: {{ projekt.DataZl }}
                         </div>
 
-                        <a href="projekt.php?id={{ projekt.id }}">
+                        <a href="projekt.php?idproj={{ projekt.id }}">
                             <button class="btn-prim">
                                 Zobacz projekt!
                             </button>
