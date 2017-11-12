@@ -272,6 +272,8 @@ button{
 }
 
 input[type=text],
+input[type=date],
+input[type=number],
 input[type=password]{
     width: 80%;
 	background-color: #efefef;

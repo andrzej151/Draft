@@ -297,14 +297,14 @@ $idprojektu=$_GET['idproj'];
                                     if($b_lider){
                                         if($status==1)
                                         {
-                                             echo( '<a href="stworz_spotkanie.php?id="  '.$idprojektu.'><li>Stwórz Spotkanie</li>
+                                             echo( '<a href="stworz_spotkanie.php?idproj=  '.$idprojektu.'"><li>Stwórz Spotkanie</li>
                                                 </a>');}};
                                 ?>
                             <?php 
                                     if($b_lider){
                                         if($status==1)
                                         {
-                                             echo( '<a href="../Zadania/stworz_zadanie.php?id=" '.$idprojektu.'><li>Stwórz Zadanie</li>
+                                             echo( '<a href="../Zadania/stworz_zadanie.php?idproj='.$idprojektu.'"><li>Stwórz Zadanie</li>
                                                 </a>');}};
                                 ?>
                         </ul>
