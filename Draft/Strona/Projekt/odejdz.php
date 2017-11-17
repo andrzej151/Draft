@@ -9,7 +9,7 @@
 	}
 	if (!isset($_GET['idproj']))
 	{
-		header('Location: Draft/index');
+		header('Location: wszystkie_projekty.php');
 		exit();
 	}
 
@@ -46,7 +46,7 @@
                     {
                          $rezultat = $polaczenie->query("DELETE FROM `DLiderzy` WHERE `idusera`='$idu' AND `idproj`='$idp'");	
                         $rezultat = $polaczenie->query("DELETE FROM `DUczestnProj` WHERE `idusera`='$idu' AND `idproj`='$idp'");	
-                        header('Location: projekt.php?id='.$idp);
+                        header('Location: projekt.php?idproj='.$idp);
                     }
                     else
                     {
@@ -57,7 +57,7 @@
                 {
                    
                              $rezultat = $polaczenie->query("DELETE FROM `DUczestnProj` WHERE `idusera`='$idu' AND `idproj`='$idp'");	
-                            header('Location: projekt.php?id='.$idp);
+                            header('Location: projekt.php?idproj='.$idp);
                   
                     }
                 }

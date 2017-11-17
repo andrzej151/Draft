@@ -9,7 +9,7 @@
 	}
 	if (!isset($_GET['idproj']))
 	{
-		header('Location: Draft/index');
+		header('Location: wszystkie_projekty.php');
 		exit();
 	}
 
@@ -35,12 +35,12 @@
 				if($ile_takich==0)
 				{
 					 $rezultat = $polaczenie->query("INSERT INTO `DUczestnProj`(`idproj`, `idusera`) VALUES('$idp','$idu')");
-                    header('Location: projekt.php?id='.$idp);
+                    header('Location: projekt.php?idproj='.$idp);
 				}
                 else
                 {
                     
-                    header('Location: projekt.php?id='.$idp);
+                    header('Location: projekt.php?idproj='.$idp);
                     
                 }
 				
