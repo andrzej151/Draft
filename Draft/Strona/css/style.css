@@ -490,6 +490,38 @@ a{
 }
 
 
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+        th 
+        {
+            background-color: #05a30c;
+            color: white;
+            
+        }
+        tr:nth-child(even) 
+        {
+            background-color: #7092c9;
+        }
+          tr:nth-child(odd)
+        {
+            background-color: #5070a7;
+        }
+       
+        th, td {
+            border: 3px solid #222;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        tr:hover {
+            background: #05a30c;
+        }
+        
+    
+
 
 
 

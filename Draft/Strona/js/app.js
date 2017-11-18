@@ -28,7 +28,7 @@ var adr = parseURLParams(document.URL);
                 $http.get('http://and-dab.cba.pl/Draft/Projekt/uczestnicy_dane.php?idproj='+adr.idproj[0] ).success(
                     function (data) {
                   
-                        $scope.idproj=adr.idproj[0];
+                       
                         $scope.uczestnicy = data;
                     });
             
@@ -41,9 +41,21 @@ var adr = parseURLParams(document.URL);
               $http.get('http://and-dab.cba.pl/Draft/Projekt/liderzy_dane.php?idproj='+adr.idproj[0] ).success(
                     function (data) {
                         
-                        $scope.idproj=adr.idproj[0];
+                     
                         $scope.liderzy = data;
                     });
+
+                    }]);
+    
+     app.controller('Zadania', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+
+                $http.get('http://and-dab.cba.pl/Draft/Zadania/zadania_projekt_dane.php?idproj='+adr.idproj[0] ).success(
+                    function (data) {
+                  
+                        
+                        $scope.zadania = data;
+                    });
+            
 
                     }]);
     

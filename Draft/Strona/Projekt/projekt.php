@@ -146,7 +146,7 @@ $idprojektu=$_GET['idproj'];
         <link rel="stylesheet" href="../css/style.css">
     </head>
 
-    <body >
+    <body ng-app='AppUczestnicy'>
 
         <div class="wrapper">
             <div class="header">
@@ -382,7 +382,7 @@ $idprojektu=$_GET['idproj'];
                         </div>
                     </div>
                     <div id="uczestnicy">
-                        <div ng-app='AppUczestnicy'>
+                        <div >
 
                             <div ng-controller='Liderzy'>
 
@@ -429,8 +429,36 @@ $idprojektu=$_GET['idproj'];
 
 
                     <div id="zadania" class="box">
-                        <h3>Zadania</h3>
-                        <tabela></tabela>
+                    
+                        <div ng-app='AppZadania'>
+                            <div ng-controller='Zadania'>
+                                <div >
+                                    <div >
+                                        <h1>Zadania</h1><br/>
+                                        <input type="text" placeholder="Jakiego zadania sukasz?" ng-model="wyszukiwarkazadania">
+                                    </div>
+                                </div>
+                                <table>
+                                    <tr>
+                                        <th>Nazwa</th>
+                                        <th>Status</th>
+                                        <th>Priorytet</th>
+                                        <th>Dedline</th>
+                                        <th>Punkty</th>
+                                        <th>Wiecej</th>
+                                    </tr>
+                                    <tr ng-repeat="zad in zadania| filter : wyszukiwarkazadania">
+                                        <td>{{zad.nazwa}}</td>
+                                        <td>{{zad.status}}</td>
+                                        <td>{{zad.priorytet}}</td>
+                                        <td>{{zad.dedline}}</td>
+                                        <td>{{zad.punkty}}</td>
+                                        <td><a href="http://and-dab.cba.pl/Draft/Zadania/zadanie.php?idzad={{zad.id}}"><button class="btn-prim">Wiecej</button></a></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
                     </div>
                     <div id="uwagi" class="box">
                         <h3>Uwagi</h3>
@@ -454,9 +482,9 @@ $idprojektu=$_GET['idproj'];
 
         </script>
         <script src="../js/angular.min.js"></script>
+        <script src="../js/app.js"></script>
 
-        <script src="../js/uczestnicy.js"></script>
-
+        
 
 
     </body>
