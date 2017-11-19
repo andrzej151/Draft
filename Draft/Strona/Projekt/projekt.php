@@ -177,7 +177,7 @@ $idprojektu=$_GET['idproj'];
                                 );
                         }else{
                             echo('
-                                <li><a href="../Draft/index">Strona główna</a></li>
+                                <li><a href="../index.php">Strona główna</a></li>
                                 <li><a href="#">O Projekcie</a></li>
                                 <li><a href="#">Projekty</a></li>
                                 <li><a href="#">Kontakt</a></li>'
@@ -445,6 +445,7 @@ $idprojektu=$_GET['idproj'];
                                         <th>Priorytet</th>
                                         <th>Dedline</th>
                                         <th>Punkty</th>
+                                        <th>Max ilosc osób</th>
                                         <th>Wiecej</th>
                                     </tr>
                                     <tr ng-repeat="zad in zadania| filter : wyszukiwarkazadania">
@@ -453,6 +454,7 @@ $idprojektu=$_GET['idproj'];
                                         <td>{{zad.priorytet}}</td>
                                         <td>{{zad.dedline}}</td>
                                         <td>{{zad.punkty}}</td>
+                                        <td>{{zad.ileosob}}</td>
                                         <td><a href="http://and-dab.cba.pl/Draft/Zadania/zadanie.php?idzad={{zad.id}}"><button class="btn-prim">Wiecej</button></a></td>
                                     </tr>
                                 </table>

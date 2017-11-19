@@ -261,15 +261,34 @@ button{
     transition: all 0.4s ese-in-out;
 }
 
-.btn-dgr{
+.btn-dgr:hover{
     background-color: #CC4444;
     transform: scale(0.9);
 }
 
- button:hover{
-    background-color: #3333BB;
+.btn-suc{
+    background-color: #31b711;
+    width: 300px;
+    color:  white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    font-size: 20px;
+    padding: 15px 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.4s ese-in-out;
+}
+
+.btn-suc:hover{
+    background-color: #1d8604;
     transform: scale(0.9);
 }
+
+
 
 input[type=text],
 input[type=date],

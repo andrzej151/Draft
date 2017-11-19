@@ -25,9 +25,9 @@
 			else
 			{
                 $idproj = $_GET['idproj'];
-                $q ='SELECT id, nazwa, punkty, priorytet, dedline, status
+                $q ='SELECT id, nazwa, punkty, priorytet, dedline, status, ileosob
 FROM `DZadanieG` WHERE `idproj`='.$idproj;
-                ec
+            
                 $sql=mysql_query($q);
                 while($row=mysql_fetch_assoc($sql)){ 
 				$output[]=$row; 
