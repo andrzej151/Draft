@@ -120,7 +120,7 @@ $idzad=$_GET['idzad'];
 			else
 			{
                 $q="SELECT * FROM DZadanieG WHERE id ='$idzad'";
-                echo($q);
+               // echo($q);
                 $sql=mysql_query($q);
                 
                 while($row=mysql_fetch_assoc($sql)){ 
@@ -218,14 +218,22 @@ $idzad=$_GET['idzad'];
                         <div class="funkcje">
                             <h3>Funkcje</h3>
                             <a href="../Projekt/projekt.php?idproj=<?php echo($zadanie["idproj"]) ?>"><button class="btn-prim">Projekt</button></a>
-                            <?php
+                        
+                            
                             <a href="przyjmij_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-prim">Przyjmij zadanie</button></a>
-                            <a href="wykonaj_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-suc">Zadanie Wykonane</button></a>
-                            <a href="zadanie_nie_wykonane.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">Zadanie NIE Wykonane</button></a>
-                            <a href="akceptuj_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-suc">Akceptuj Zadanie</button></a>
-                            <a href="nie_akceptuj_zadania.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">NIE Akceptuje Zadania</button></a>
-                            <a href="uwagazad.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">Dodaj Uwagę</button></a>
-                                ?>
+    
+     <a href="edytuj_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-prim">Edutuj zadanie</button></a>
+                           
+    <a href="wykonaj_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-suc">Zadanie Wykonane</button></a>
+                           
+    <a href="zadanie_nie_wykonane.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">Zadanie NIE Wykonane</button></a>
+                            
+    <a href="akceptuj_zadanie.php?idzad=<?php echo($idzad) ?>"><button class="btn-suc">Akceptuj Zadanie</button></a>
+                            
+    <a href="nie_akceptuj_zadania.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">NIE Akceptuje Zadania</button></a>
+                           
+    <a href="uwagazad.php?idzad=<?php echo($idzad) ?>"><button class="btn-dgr">Dodaj Uwagę</button></a>
+                                
                             
                         </div>
                         

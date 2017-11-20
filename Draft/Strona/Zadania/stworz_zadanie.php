@@ -85,7 +85,7 @@
         
     
 		$opis = $_POST['opis'];
-        
+        $maxosob =$_POST['maxosob'];
         $dedline =$_POST['dedline'];
         
          $priorytet =$_POST['priorytet'];
@@ -94,6 +94,11 @@
 		{
 			$wszystko_OK=false;
 			$_SESSION['e_priorytet']="Priorytet musi byc liczba z przedzału [1 9]!";
+		}
+          if ($maxosob<1)
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_maxosob']="Max liczba musi byc liczbą wieksza niż 0!";
 		}
         
         $punkty =$_POST['punkty'];
@@ -119,6 +124,7 @@
         $_SESSION['fr_dedline'] = $dedline;
 		$_SESSION['fr_priorytet'] = $priorytet;
 		$_SESSION['fr_punkty'] = $punkty;
+        $_SESSION['fr_maxosob'] = $maxosob;
 	
 		require_once "../Admin/connect.php";
 		mysqli_report(MYSQLI_REPORT_STRICT);
@@ -138,7 +144,7 @@
 				{
                     
                     
-					if ($polaczenie->query("INSERT INTO `DZadanieG`(`id`, `idproj`, `nazwa`, `opis`, `punkty`, `priorytet`, `dedline`, `status`, `link`) VALUES (NULL,'$idprojektu','$nazwa','$opis','$punkty','$priorytet','$dedline','DODANO',NULL)"))
+					if ($polaczenie->query("INSERT INTO `DZadanieG`(`id`, `idproj`, `nazwa`, `opis`, `punkty`, `priorytet`, `dedline`, `status`, ileosob,`link`) VALUES (NULL,'$idprojektu','$nazwa','$opis','$punkty','$priorytet','$dedline','DODANO', '$maxosob',NULL)"))
 					{
                         
                         $_SESSION['succes']="Zadanie dodano poprawnie"; 
@@ -282,6 +288,22 @@
                             {
                                 echo '<div class="error">'.$_SESSION['e_priorytet'].'</div>';
                                 unset($_SESSION['e_priorytet']);
+                            }
+                        ?> <br/>
+                           
+                           Max liczba osób: <br /> <input type="number"  value="<?php
+                            if (isset($_SESSION['fr_maxosob']))
+                            {
+                                echo $_SESSION['fr_maxosob'];
+                                unset($_SESSION['fr_maxosob']);
+                            }
+                        ?>" name="maxosob" /><br />
+
+                        <?php
+                            if (isset($_SESSION['e_maxosob']))
+                            {
+                                echo '<div class="error">'.$_SESSION['e_maxosob'].'</div>';
+                                unset($_SESSION['e_maxosob']);
                             }
                         ?> <br/>
                             
