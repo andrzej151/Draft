@@ -1,11 +1,11 @@
 <?php
-/*	session_start();
+	session_start();
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
 		header('Location: Draft/');
 		exit();
-	}*/
+	}
 
 		require_once "../Admin/connect.php";
 		
@@ -13,6 +13,7 @@
 		
 		try 
 		{
+            $idusera=$_SESSION['id'];
 
 			mysql_connect($host,$db_user,$db_password); 
 			mysql_select_db($db_name); 
@@ -24,8 +25,9 @@
 			}
 			else
 			{
-                $idusera = $_GET['id'];
-                $q ='SELECT * FROM DProjekty, DUczestnProj WHERE DUczestnProj.idusera ='.$idusera.'  AND DProjekty.id=DUczestnProj.idproj';
+                $idusera = $_SESSION['id'];
+                $q ='SELECT * FROM DProjekty, DLiderzy WHERE DProjekty.id=DLiderzy.idproj AND DLiderzy.idusera ='.$idusera;
+              
                 $sql=mysql_query($q);
                 while($row=mysql_fetch_assoc($sql)){ 
 				$output[]=$row; 

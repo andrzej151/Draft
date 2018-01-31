@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="../css/style.css">
     </head>
 
-    <body ng-app='myApp'>
+    <body ng-app='App'>
 
         <div class="wrapper">
             <div class="header">
@@ -53,7 +53,7 @@
 
             <div class="content">
 
-                <div ng-controller='TwojeProjektyLider'>
+                <div ng-controller='Projektlider'>
                    <div class="wyszukiwarka">
                        <h1>Twoje projekty w których jesteś liderem </h1>
                         <input type="text" placeholder="Czego szukasz ogolnie?" ng-model="wyszukiwarkalider">
@@ -74,7 +74,7 @@
                             Data załorzenia: {{ projekt.DataZl }}
                         </div>
 
-                        <a href="projekt.php?id={{ projekt.id }}">
+                        <a href="projekt.php?idproj={{ projekt.id }}">
                             <button class="btn-prim">
                                 Zobacz projekt!
                             </button>
@@ -82,8 +82,12 @@
                                 
                    </div>
                 </div>
+                <div>
+                <div style="clear:both;">
+                    
+                </div>
                 
-                 <div ng-controller='TwojeProjektyUczestnik'>
+                 <div ng-controller='Projektuczestnik'>
                    <div class="wyszukiwarka">
                        <h1>Twoje projekty w których jesteś Uczestnikiem </h1><br/>
                         <input type="text" placeholder="Czego szukasz ogolnie?" ng-model="wyszukiwarkauczestnik">
@@ -104,15 +108,15 @@
                             Data załorzenia: {{ projekt.DataZl }}
                         </div>
 
-                        <a href="projekt.php?id={{ projekt.id }}">
+                        <a href="projekt.php?idproj={{ projekt.id }}">
                             <button class="btn-prim">
                                 Zobacz projekt!
                             </button>
                         </a>   
-                                
+                      ul>li*5>lorem          
                    </div>
                 </div>
-                
+                </div>
                 
             </div>
         </div>

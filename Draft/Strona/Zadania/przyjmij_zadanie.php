@@ -55,6 +55,14 @@
 				
                         if (!$rezultat) throw new Exception($polaczenie->error);
                         
+                        $sql="UPDATE `DZadanieG` SET `status`='REALIZACJA' WHERE id=".$idzad;
+                        echo($sql);
+                        
+                        $rezultat = $polaczenie->query($sql);
+                        
+				
+                        if (!$rezultat) throw new Exception($polaczenie->error);
+                        
                         header('Location: zadanie.php?idzad='.$idzad);
 		                  exit();
                     }
