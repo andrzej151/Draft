@@ -1,5 +1,7 @@
 <?php
 	session_start();
+    require_once "../Domena/head.php"; // menu
+
 	
 	if (isset($_POST['email']))
 	{
@@ -58,13 +60,13 @@
 		if ((strlen($haslo1)<8) || (strlen($haslo1)>20))
 		{
 			$wszystko_OK=false;
-			$_SESSION['e_haslo']="Hasło musi posiadać od 8 do 20 znaków!";
+			$_SESSION['e_password']="Hasło musi posiadać od 8 do 20 znaków!";
 		}
 		
 		if ($haslo1!=$haslo2)
 		{
 			$wszystko_OK=false;
-			$_SESSION['e_haslo']="Podane hasła nie są identyczne!";
+			$_SESSION['e_password2']="Podane hasła nie są identyczne!";
 		}	
 
 		$haslo_hash = password_hash($haslo1, PASSWORD_DEFAULT);
@@ -171,7 +173,8 @@
                     unset($_SESSION['e_password']);
                     unset($_SESSION['e_password2']);    
                     unset($_SESSION['e_regulamin']);      
-				    header('Location: witamy');
+				    header('Location: witamy.php');
+                    exit();
                 }
                     
                 
@@ -189,7 +192,7 @@
         }
     }
         
-    require_once "../Domena/head.php"; // menu
+   
 ?>
 
         <div class="content">
@@ -298,6 +301,7 @@
                     
          </div>
     </div>
+</div>
 
 	
 	<script src='https://www.google.com/recaptcha/api.js'></script>    

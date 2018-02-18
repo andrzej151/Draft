@@ -5,13 +5,13 @@ Deny from all
 </FilesMatch>
 
 RewriteEngine on
+RewriteEngine on
 RewriteRule draft index.php
 RewriteRule index index.php
 RewriteRule zaloguj index.php
-RewriteRule witamy witamy.php
 RewriteRule login Rejestracja/zaloguj.php
 RewriteRule zaloguj-sie index.php
-RewriteRule Rejestracja Rejestracja/rejestracja.php
+RewriteRule rejestracja Rejestracja/rejestracja.php
 RewriteRule aktywacja Rejestracja/aktywacja.php
 RewriteRule przypomnij-haslo Rejestracja/przypomnij_haslo.php
 RewriteRule zmien-haslo Rejestracja/zmien_haslo.php

@@ -15,7 +15,7 @@ require_once( ROOT_PATH . "/Domena/head.php");
         <div class="content">
              <main>
                 <div id="logowanie">
-                    <a href="../Draft/rejestracja">
+                    <a href="rejestracja">
                         <button>Rejestracja  załóż darmowe konto!</button>
                     </a>
 

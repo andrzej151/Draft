@@ -34,7 +34,7 @@
             <div class="pole">
                 Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!
 	
-                <a href="index">
+                <a href="..">
                     <button class="btn-prim">Zaloguj się na swoje konto!</button>
                 </a>
                 

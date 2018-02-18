@@ -1,3 +1,7 @@
+<?php
+    define('ROOT', ('http://www.'.$_SERVER['HTTP_HOST'].'/Draft/'));
+    
+?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -13,7 +17,7 @@
             <div class="logo">
                 Level UP
             </div>
-        </div>
+       
             <div class="nav">
                 <nav>
                     <ol>
@@ -24,3 +28,4 @@
 			        </ol>
                 </nav>
             </div>
+             </div>
