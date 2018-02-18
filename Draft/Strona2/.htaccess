@@ -1,0 +1,25 @@
+### PROTECT FILES ###
+<FilesMatch "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine on
+RewriteRule draft index.php
+RewriteRule index index.php
+RewriteRule zaloguj index.php
+RewriteRule witamy witamy.php
+RewriteRule login Rejestracja/zaloguj.php
+RewriteRule zaloguj-sie index.php
+RewriteRule Rejestracja Rejestracja/rejestracja.php
+RewriteRule aktywacja Rejestracja/aktywacja.php
+RewriteRule przypomnij-haslo Rejestracja/przypomnij_haslo.php
+RewriteRule zmien-haslo Rejestracja/zmien_haslo.php
+RewriteRule witamy Rejestracja/witamy.php
+RewriteRule haslo-zmieniono Rejestracja/zmiana.php
+RewriteRule profil Profil/profil.php
+RewriteRule wyloguj-sie Rejestracja/logout.php
+RewriteRule aktualnosci Profil/aktualnosci.php
+RewriteRule style css/style.css
+RewriteRule jquery js/jquery.min.js
+RewriteRule stickymenu js/stickymenu.js
