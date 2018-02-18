@@ -1,55 +1,49 @@
 <?php
     session_start();
+    require_once "../Domena/head.php"; // menu
 	
 	if (isset($_POST['email']))
 	{
-    // Sprawdź poprawność adresu email
-		$email = $_POST['email'];
-		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-		
-		if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+        // Sprawdź poprawność adresu email
+        $wszystko_OK=true;
+		$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        
+        if (empty($email))
 		{
 			$wszystko_OK=false;
 			$_SESSION['e_email']="Podaj poprawny adres e-mail!";
 		}
-        
-        
-        require_once "../Admin/connect.php";
-		mysqli_report(MYSQLI_REPORT_STRICT);
 		
-		try 
-		{
-			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				throw new Exception(mysqli_connect_errno());
-			}
-			else
-			{
-				//Czy email już istnieje?
-				$rezultat = $polaczenie->query("SELECT id FROM DUsers WHERE email='$email'");
-				
-				if (!$rezultat) throw new Exception($polaczenie->error);
-				
-				$ile_takich_maili = $rezultat->num_rows;
-				if($ile_takich_maili>0)
-				{
-				     $kod = password_hash(rand(123, 12345), PASSWORD_DEFAULT);
-                    
-					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
-                    
-					if ($polaczenie->query('UPDATE `DUsers` SET `status` = "AKT", `kod` = "'.$kod.'"  WHERE `email`= "' . $email . '"'))
-					{
-                        $email_active = "email_przypomnij_haslo.html";
+        if($wszystko_OK)
+        {
+            require_once "../Admin/database.php";
+            
+            //Czy email już istnieje?
+            
+            $query_email = $db->prepare("SELECT id FROM DUsers WHERE email= :email");
+            $query_email->bindValue(':email', $email, PDO::PARAM_STR);
+            $query_email->execute();
+            
+            if($query_email->rowCount()>0)
+            {
+                $kod = password_hash(rand(123, 12345), PASSWORD_DEFAULT);
+                
+               
+                $query_email = $db->prepare("UPDATE DUsers SET status = 'ZBL', kod = :kod  WHERE email= :email");
+                $query_email->bindValue(':email', $email, PDO::PARAM_STR);
+                $query_email->bindValue(':kod', $kod, PDO::PARAM_STR);
+                $query_email->execute();
+                
+                $email_active = "email_przypomnij_haslo.html";
 						$messeage = file_get_contents($email_active);
 						$messeage = str_replace("[Imie]", $imie, $messeage);
 						$messeage = str_replace("[Nazwisko]", $nazwisko, $messeage);
 						$messeage = str_replace("[key]", $kod, $messeage);
 						$messeage = str_replace("[url]", "http://" . $_SERVER['HTTP_HOST'].'/Draft/zmien-haslo', $messeage);
 
-						$naglowki = "From: admin@and-dab.cba.pl\n" .
-									"Reply-To: admin@and-dab.cba.pl\n" .
-									"Content-type: text/html; charset=utf-8\n";
+					$naglowki = "From: admin@andrzejd.cba.pl\n" .
+							"Reply-To: admin@andrzejd.cba.pl\n" .
+							"Content-type: text/html; charset=utf-8\n";
 
 						if(mail($email, "Przypomnienie hasła", $messeage, $naglowki))
                         {
@@ -59,91 +53,58 @@
                         {
                             $_SESSION['e_email']="blad przy wysyłce maila";
                         }
-				    }		
-
-				
-                   
-						
-					}
+                
 					
-					
-				}
-				
-				$polaczenie->close();
-			
-			
-		}
-		catch(Exception $e)
-		{
-			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-			echo '<br />Informacja developerska: '.$e;
-		}
-        
-        
+            }else{
+                $wszystko_OK=false;
+					$_SESSION['e_email']="Błedny adres email.";
+            }
+        }
     }
-
+        
 
 ?>
 
 
-<!DOCTYPE HTML>
-<html lang="pl">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="../gra/gra.css">
-	<title>Draft - Przypomnij haslo</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-
-	 <div class="wrapper">
-        <div class="header">
-            <div class="logo">
-                DRAFT
-            </div>
-        </div>
-            <div class="nav">
-                <nav>
-                    <ol>
-                        <li><a href="index">Strona główna</a></li>
-                        <li><a href="#">O Projekcie</a></li>
-                        <li><a href="#">Projekty</a></li>
-                        <li><a href="#">Kontakt</a></li>					
-			        </ol>
-                </nav>
-            </div>
-        
-        <div class="content">
-            <div class="pole">
-                  <?php
+    <div class="content">
+        <div class="pole">
+            <?php
                         if (isset($_SESSION['succes']))
                         {
-                            echo '<div >'.$_SESSION['succes'].'</div>';
+                            echo '<p class="succes">'.$_SESSION['succes'].'</p>';
                             unset($_SESSION['succes']);
                         }
                     ?>
-               <p>Przypomnij hasło</p>
+                <h4>Przypomnij hasło</h4>
                 <form action="" method="post">
-                        Podaj E-mail podany przy rejestracji: <br /> <input type="text"  name="email" /><br />
-
+                    <p>Podaj adres e-mail podany podczas rejestracji</p>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" <?=isset($_SESSION[ 'fr_email'])? 'value="'.$_SESSION[ 'fr_email']. '"' : ''?> name="email" required/>
                     <?php
-                        if (isset($_SESSION['e_email']))
-                        {
-                            echo '<div class="error">'.$_SESSION['e_email'].'</div>';
-                            unset($_SESSION['e_email']);
-                        }
-                    ?>
+                            if (isset($_SESSION['e_email']))
+                            {
+                                echo '<p class="error">'.$_SESSION['e_email'].'</p>';
+                                unset($_SESSION['e_email']);
+                                unset($_SESSION['fr_email']);
+                            }
+                        ?>
 
-               <input type="submit" value="Wyslij link" />
+                        <input type="submit" value="Wyslij link" />
                 </form>
-            </div>
-         </div>
+        </div>
     </div>
-	
-	<script src="js/jquery.min.js"> </script>
-	<script src="js/stickymenu.js"> </script>
+    </div>
 
-</body>
-</html>
+    <script src="js/jquery.min.js">
+
+
+    </script>
+    <script src="js/stickymenu.js">
+
+
+    </script>
+
+    </body>
+
+    </html>
